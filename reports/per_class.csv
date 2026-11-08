@@ -1,0 +1,38 @@
+class,precision,recall,f1,support
+Abyssinian,0.786,0.939,0.856,98
+American Bulldog,0.677,0.86,0.758,100
+American Pit Bull Terrier,0.795,0.31,0.446,100
+Basset Hound,0.875,0.91,0.892,100
+Beagle,0.873,0.89,0.881,100
+Bengal,0.812,0.91,0.858,100
+Birman,0.783,0.83,0.806,100
+Bombay,0.898,0.898,0.898,88
+Boxer,0.851,0.869,0.86,99
+British Shorthair,0.908,0.79,0.845,100
+Chihuahua,0.695,0.89,0.781,100
+Egyptian Mau,0.953,0.835,0.89,97
+English Cocker Spaniel,0.91,0.91,0.91,100
+English Setter,0.938,0.91,0.924,100
+German Shorthaired,0.824,0.98,0.895,100
+Great Pyrenees,0.942,0.98,0.961,100
+Havanese,0.975,0.78,0.867,100
+Japanese Chin,0.951,0.98,0.966,100
+Keeshond,0.99,0.97,0.98,99
+Leonberger,1.0,0.95,0.974,100
+Maine Coon,0.867,0.78,0.821,100
+Miniature Pinscher,0.953,0.81,0.876,100
+Newfoundland,0.916,0.98,0.947,100
+Persian,0.906,0.87,0.888,100
+Pomeranian,0.976,0.8,0.879,100
+Pug,0.979,0.94,0.959,100
+Ragdoll,0.745,0.73,0.737,100
+Russian Blue,0.944,0.85,0.895,100
+Saint Bernard,0.916,0.98,0.947,100
+Samoyed,0.866,0.97,0.915,100
+Scottish Terrier,0.69,0.99,0.813,99
+Shiba Inu,0.786,0.99,0.876,100
+Siamese,0.89,0.89,0.89,100
+Sphynx,1.0,0.77,0.87,100
+Staffordshire Bull Terrier,0.606,0.64,0.623,89
+Wheaten Terrier,0.974,0.74,0.841,100
+Yorkshire Terrier,0.93,0.93,0.93,100

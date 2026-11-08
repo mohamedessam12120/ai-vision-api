@@ -1,0 +1,10 @@
+American Pit Bull Terrier -> predicted as Staffordshire Bull Terrier: 30 times
+Wheaten Terrier -> predicted as Scottish Terrier: 19 times
+Sphynx -> predicted as Chihuahua: 18 times
+Ragdoll -> predicted as Birman: 17 times
+Staffordshire Bull Terrier -> predicted as American Bulldog: 16 times
+American Pit Bull Terrier -> predicted as German Shorthaired: 15 times
+Egyptian Mau -> predicted as Bengal: 14 times
+American Pit Bull Terrier -> predicted as American Bulldog: 13 times
+Miniature Pinscher -> predicted as Chihuahua: 12 times
+Pomeranian -> predicted as Samoyed: 10 times

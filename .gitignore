@@ -5,3 +5,4 @@ __pycache__/
 data/
 *.pt
 .ipynb_checkpoints/
+logs/

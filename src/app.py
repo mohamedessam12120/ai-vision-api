@@ -4,17 +4,20 @@ import logging
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
+from datetime import datetime, timezone
 
 import torch
 import torch.nn as nn
 from fastapi import FastAPI, File, HTTPException, UploadFile
-from PIL import Image, UnidentifiedImageError
+from PIL import Image, ImageStat, UnidentifiedImageError
 from torchvision import models, transforms
 
 MODEL_PATH = Path("models/resnet18_pets.pt")
 CLASSES_PATH = Path("models/classes.json")
 MAX_BYTES = 5_000_000
 ALLOWED_TYPES = {"image/jpeg", "image/png"}
+UNCERTAIN_THRESHOLD = 0.6
+LOG_PATH = Path("logs/predictions.jsonl")
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("api")
@@ -77,5 +80,23 @@ async def predict(file: UploadFile = File(...)):
     ]
     ms = round((time.perf_counter() - start) * 1000, 1)
 
-    log.info("prediction=%s confidence=%.3f time_ms=%s", results[0]["class"], results[0]["confidence"], ms)
-    return {"prediction": results[0], "top3": results, "inference_ms": ms}
+    confidence = results[0]["confidence"]
+    uncertain = confidence < UNCERTAIN_THRESHOLD
+
+    record = {
+        "time": datetime.now(timezone.utc).isoformat(),
+        "prediction": results[0]["class"],
+        "confidence": confidence,
+        "uncertain": uncertain,
+        "width": image.width,
+        "height": image.height,
+        "brightness": round(ImageStat.Stat(image.convert("L")).mean[0], 1),
+        "inference_ms": ms,
+    }
+    LOG_PATH.parent.mkdir(exist_ok=True)
+    with LOG_PATH.open("a") as f:
+        f.write(json.dumps(record) + "\n")
+
+    log.info("prediction=%s confidence=%.3f uncertain=%s time_ms=%s",
+             record["prediction"], confidence, uncertain, ms)
+    return {"prediction": results[0], "uncertain": uncertain, "top3": results, "inference_ms": ms}
